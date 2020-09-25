@@ -1,11 +1,11 @@
 package data
 
 type Assigment struct {
-	ID          int
-	Methodology string
-	Roles       string
-	Description string
-	Project     string
+	ID          int    `json:"id"`
+	Methodology string `json:"methodology"`
+	Roles       string `json:"roles"`
+	Description string `json:"description"`
+	Project     string `json:"project"`
 }
 
 func GetAssigments() []*Assigment {
