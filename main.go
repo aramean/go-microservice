@@ -13,12 +13,16 @@ import (
 
 func main() {
 
-	// References
 	l := log.New(os.Stdout, "api", log.LstdFlags)
-	hh := handlers.NewHello(l)
 
+	// create handlers
+	hh := handlers.NewHello(l)
+	ah := handlers.NewAssigments(l)
+
+	// create server and register handlers
 	sm := http.NewServeMux()
 	sm.Handle("/", hh)
+	sm.Handle("/assigments", ah)
 
 	s := &http.Server{
 		Addr:         ":888",
