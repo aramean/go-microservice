@@ -24,6 +24,7 @@ func main() {
 	sm.Handle("/", hh)
 	sm.Handle("/assigments", ah)
 
+	// start a new server
 	s := &http.Server{
 		Addr:         ":888",
 		Handler:      sm,
