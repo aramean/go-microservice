@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 
@@ -20,10 +19,8 @@ func (a *Assigments) ServeHTTP(rw http.ResponseWriter, h *http.Request) {
 	a.l.Println("Hello Assigments!")
 
 	la := data.GetAssigments()
-	d, err := json.Marshal(la)
+	err := la.ToJSON(rw)
 	if err != nil {
 		http.Error(rw, "Unable to marshal json", http.StatusInternalServerError)
 	}
-
-	rw.Write(d)
 }

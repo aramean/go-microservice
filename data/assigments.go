@@ -1,5 +1,10 @@
 package data
 
+import (
+	"encoding/json"
+	"io"
+)
+
 type Assigment struct {
 	ID          int    `json:"id"`
 	Methodology string `json:"methodology"`
@@ -8,7 +13,14 @@ type Assigment struct {
 	Project     string `json:"project"`
 }
 
-func GetAssigments() []*Assigment {
+type Assigments []*Assigment
+
+func (a *Assigments) ToJSON(w io.Writer) error {
+	e := json.NewEncoder(w)
+	return e.Encode(a)
+}
+
+func GetAssigments() Assigments {
 	return assigmentList
 }
 
