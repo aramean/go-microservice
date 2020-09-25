@@ -35,6 +35,8 @@ func main() {
 
 	// start server
 	go func() {
+		l.Println("Starting server on port 888")
+
 		err := s.ListenAndServe()
 		if err != nil {
 			l.Fatal(err)
