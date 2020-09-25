@@ -1,6 +1,8 @@
 # go-microservice
 
+- [x] Standard library
 
-## API
+
+## RESTful API
 ### Get assigments
 ```curl http://localhost:888/assigments```
