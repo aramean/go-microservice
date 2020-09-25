@@ -20,6 +20,12 @@ func (a *Assigments) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	case http.MethodGet:
 		a.GetAssigments(rw, r)
 		return
+	case http.MethodPost:
+		rw.WriteHeader(http.StatusNotImplemented)
+		return
+	case http.MethodDelete:
+		rw.WriteHeader(http.StatusNotImplemented)
+		return
 	}
 
 	rw.WriteHeader(http.StatusMethodNotAllowed)
