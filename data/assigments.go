@@ -8,7 +8,7 @@ type Assigment struct {
 	Project     string
 }
 
-func getAssigments() []*Assigment {
+func GetAssigments() []*Assigment {
 	return assigmentList
 }
 
