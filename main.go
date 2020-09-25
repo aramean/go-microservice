@@ -39,7 +39,8 @@ func main() {
 
 		err := s.ListenAndServe()
 		if err != nil {
-			l.Fatal(err)
+			l.Printf("Error starting server: %s \n", err)
+			os.Exit(1)
 		}
 	}()
 
