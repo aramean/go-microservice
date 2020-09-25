@@ -19,12 +19,12 @@ func main() {
 	hh := handlers.NewHello(l)
 	ah := handlers.NewAssigments(l)
 
-	// create server and register handlers
+	// create serve mux and register handlers
 	sm := http.NewServeMux()
 	sm.Handle("/", hh)
 	sm.Handle("/assigments", ah)
 
-	// start a new server
+	// create a new server
 	s := &http.Server{
 		Addr:         ":888",
 		Handler:      sm,
@@ -33,6 +33,7 @@ func main() {
 		WriteTimeout: 1 * time.Second,
 	}
 
+	// start server
 	go func() {
 		err := s.ListenAndServe()
 		if err != nil {
@@ -40,6 +41,7 @@ func main() {
 		}
 	}()
 
+	// graceful shutdown server
 	sc := make(chan os.Signal)
 	signal.Notify(sc, os.Interrupt)
 	signal.Notify(sc, os.Kill)
